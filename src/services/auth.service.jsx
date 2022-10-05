@@ -3,7 +3,7 @@ import axios from "axios";
 
 const URL = "http://localhost:8081/joole/controller/"
 
-const register = (username, password, email) => {
+const register = (username, email, password) => {
     // Todo: change the backend createUser to signup
     // Todo: change the backend name to username
     return axios.post(URL + "createUser", {
