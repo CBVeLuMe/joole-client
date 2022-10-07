@@ -1,12 +1,12 @@
 // The Authentication Service uses Axios for HTTP requests and local storage for user information and JWT.
 import axios from "axios";
+import authHeader from "./auth-header";
 
-const URL = "http://localhost:8081/joole/controller/"
+const URL = "http://localhost:8081/joole/api/auth"
 
 const register = (username, email, password) => {
-    // Todo: change the backend createUser to signup
     // Todo: change the backend name to username
-    return axios.post(URL + "createUser", {
+    return axios.post(URL + "/signup", {
         name: username,
         password: password,
         emailAddress: email
@@ -14,9 +14,8 @@ const register = (username, email, password) => {
 };
 
 const login = (username, password) => {
-    // Todo: change the backend authenticate to signin
     return axios
-        .post(URL + "authenticate", {
+        .post(URL + "/signin", {
             username,
             password
         })
@@ -25,6 +24,19 @@ const login = (username, password) => {
             if (response.data) {
                 localStorage.setItem("user", JSON.stringify(response.data));
             }
+            return response.data;
+        });
+};
+
+// Todo: no perfect here, should combine the auth and findByName
+const findUserByName = (username) => {
+    return axios
+        .post(URL + "/findByName", {
+            headers: authHeader(),
+            username
+        })
+        .then((response) => {
+            localStorage.setItem("userDetail", JSON.stringify(response.data));
             return response.data;
         });
 };

@@ -2,11 +2,15 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const URL = "http://localhost:8081/joole/controller/";
+const URL = "http://localhost:8081/joole/api/auth";
 
 // Todo: change the public content
 const getPublicContent = () => {
-    return axios.get(URL + "hello");
+    return axios.get(URL + "/hello");
+};
+
+const getPrivateContent = () => {
+    return axios.get(URL + "/hello", { headers: authHeader() });
 };
 
 // Todo: add this control panel to change user or project settings
@@ -20,6 +24,7 @@ const getPublicContent = () => {
 
 export default {
     getPublicContent,
+    getPrivateContent,
     // getUserBoard,
     // getAdminBoard
 };
