@@ -48,7 +48,7 @@ const Login = (props) => {
         event.preventDefault();
         setLoading(true);
         form.current.validateAll();
-        if (checkBtn.current.context._error.length === 0) {
+        if (checkBtn.current.context._errors.length === 0) {
             dispatch(login(username, password))
                 .then(() => {
                     navigate("/profile");
