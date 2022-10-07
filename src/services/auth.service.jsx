@@ -29,7 +29,7 @@ const login = (username, password) => {
 };
 
 const logout = () => {
-    localStorage.removeitem("user");
+    localStorage.removeItem("user");
 };
 
 export default {
