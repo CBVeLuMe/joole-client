@@ -28,19 +28,6 @@ const login = (username, password) => {
         });
 };
 
-// Todo: no perfect here, should combine the auth and findByName
-const findUserByName = (username) => {
-    return axios
-        .post(URL + "/findByName", {
-            headers: authHeader(),
-            username
-        })
-        .then((response) => {
-            localStorage.setItem("userDetail", JSON.stringify(response.data));
-            return response.data;
-        });
-};
-
 const logout = () => {
     localStorage.removeitem("user");
 };
