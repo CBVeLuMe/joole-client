@@ -15,7 +15,7 @@ const required = (value) => {
     if (!value) {
         return (
             <div className="alert alert-danger" role="alert">
-                This is filed is necessary!
+                This filed is necessary!
             </div>
         );
     }
